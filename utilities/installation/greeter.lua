@@ -35,9 +35,14 @@ local function term_width()
   return width or 80
 end
 
--- UTF-8 character length so the braille banner centers the same as in bash.
+-- Character length so the braille banner centers the same as in bash.
+-- Lua 5.1, which Debian still ships as `lua`, has no utf8 library.
 local function display_len(s)
-  return utf8.len(s) or #s
+  if utf8 and utf8.len then
+    return utf8.len(s) or #s
+  end
+  local _, count = s:gsub("[\192-\255]", "")
+  return #s - count
 end
 
 -- printf '%*s' right-justifies `text` inside a field of width `field_width`,
