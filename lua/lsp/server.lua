@@ -32,7 +32,6 @@ local servers = {
   "lua_ls",
   "eslint",
   "bashls",
-  "clangd",
   "emmet_ls",
   "dockerls",
   "marksman",

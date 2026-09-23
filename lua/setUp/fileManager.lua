@@ -1,4 +1,10 @@
 require("nvim-tree").setup({
+	-- vim.system():wait() returns nil when git exceeds the default 400ms
+	-- budget. nvim-tree then indexes that nil and the tree errors on expand.
+	git = {
+		timeout = 10000,
+	},
+
 	disable_netrw = true,
 	hijack_netrw = true,
 	open_on_tab = false,
