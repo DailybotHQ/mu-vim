@@ -10,3 +10,24 @@ pack
 .env
 
 __pycache__/
+*.py[cod]
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Editors
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+*.code-workspace
+
+# Neovim session and log files written into the config tree
+Session.vim
+.shada
+*.log
+.nvimlog
