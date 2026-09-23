@@ -25,7 +25,7 @@
 
 MμVim is three editor configs. This repository is **Current**: Lua, Neovim only, and where new work lands first.
 
-The other two are [Mini](https://github.com/AndresMpa/mu-vim-mini) (one `init.vim`) and [VimScript](https://github.com/AndresMpa/mu-vim-vimscript) (modular Vim and Neovim). Docs for all three: [andresmpa.github.io/mu-vim-page](https://andresmpa.github.io/mu-vim-page/).
+The other two are [Mini](https://github.com/DailybotHQ/mu-vim-mini) (one `init.vim`) and [VimScript](https://github.com/DailybotHQ/mu-vim-vimscript) (modular Vim and Neovim). Docs for all three: [andresmpa.github.io/mu-vim-page](https://andresmpa.github.io/mu-vim-page/).
 
 #### Take a look
 
@@ -104,11 +104,11 @@ Podman if present, otherwise Docker. On the host: `cd tests && go test -count=1 
 If the project is useful, a star on GitHub helps.
 
 <p align="center">
-  <a href="https://star-history.com/#AndresMpa/mu-vim&Date">
+  <a href="https://star-history.com/#DailybotHQ/mu-vim&Date">
    <picture>
-     <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=AndresMpa/mu-vim&type=Date&theme=dark" />
-     <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=AndresMpa/mu-vim&type=Date" />
-     <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=AndresMpa/mu-vim&type=Date" />
+     <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=DailybotHQ/mu-vim&type=Date&theme=dark" />
+     <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=DailybotHQ/mu-vim&type=Date" />
+     <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=DailybotHQ/mu-vim&type=Date" />
    </picture>
   </a>
 </p>
