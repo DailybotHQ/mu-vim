@@ -16,7 +16,11 @@ local function term_width()
 end
 
 local function display_len(s)
-  return utf8.len(s) or #s
+  if utf8 and utf8.len then
+    return utf8.len(s) or #s
+  end
+  local _, count = s:gsub("[\192-\255]", "")
+  return #s - count
 end
 
 local function right_justify(text, field_width)
