@@ -3,8 +3,39 @@ if not ok then
   return
 end
 
+local function confirm_restore(callback)
+  local actions = require("diffview.actions")
+  vim.ui.select({ "Discard changes", "Keep" }, {
+    prompt = "Discard this file's changes?",
+  }, function(choice)
+    if choice == "Discard changes" then
+      actions.restore_entry()
+    end
+    if callback then
+      callback()
+    end
+  end)
+end
+
 diffview.setup({
   enhanced_diff_hl = true,
+  keymaps = {
+    file_panel = {
+      -- d and right-click discard the file under the cursor. X stays as the
+      -- plugin default, without a prompt.
+      { "n", "d", confirm_restore, { desc = "Discard this file's changes" } },
+      {
+        "n",
+        "<RightMouse>",
+        function()
+          local actions = require("diffview.actions")
+          actions.select_entry()
+          confirm_restore()
+        end,
+        { desc = "Discard the file under the pointer" },
+      },
+    },
+  },
 })
 
 -- Space+g+d uses Diffview* groups. Those are created once, with `default`,

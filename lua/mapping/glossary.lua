@@ -45,6 +45,18 @@ local groups = {
 		},
 	},
 	{
+		title = "File tree (cursor in the tree)",
+		rows = {
+			{ "a", "Create a file or folder. End the name with / for a folder" },
+			{ "e", "Rename, including the extension" },
+			{ "d", "Delete" },
+			{ "c", "Copy" },
+			{ "x", "Cut" },
+			{ "p", "Paste" },
+			{ "g?", "Show every tree shortcut" },
+		},
+	},
+	{
 		title = "Save, quit, edit",
 		rows = {
 			{ "SPC w", "Save the file" },
@@ -111,6 +123,8 @@ local groups = {
 			{ "SPC g p x", "Push and set upstream" },
 			{ "SPC g l l", "Pull the current branch" },
 			{ "SPC g d", "Open or close the diff view" },
+			{ "d", "In the diff file list: discard that file (asks first)" },
+			{ "X", "In the diff file list: discard that file, no prompt" },
 			{ "SPC g b l", "Blame" },
 			{ "SPC g s h", "Show the last commit" },
 			{ "SPC g s w", "Switch branch (type the name)" },
