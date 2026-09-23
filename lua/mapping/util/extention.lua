@@ -123,7 +123,7 @@ extentions.OpenTerminal = function()
   local buf = vim.api.nvim_get_current_buf()
   vim.keymap.set("t", "<C-h>", "<C-\\><C-n><C-w><C-h>", { buffer = buf, silent = true })
   vim.keymap.set("t", "<C-\\><C-\\>", "<C-\\><C-n>", { buffer = buf, silent = true })
-  vim.keymap.set("t", "<Leader>q", "<C-\\><C-n>:q!<CR>", { buffer = buf, silent = true })
+  vim.keymap.set("t", "<Leader>q", "<C-\\><C-n><Cmd>lua require('mapping.quit').close()<CR>", { buffer = buf, silent = true })
   vim.cmd("startinsert!")
 end
 

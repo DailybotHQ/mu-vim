@@ -3,7 +3,10 @@ local map = vim.keymap.set
 
 -- Natives
 map("n", "<Leader>w", ":w<CR>", {})
-map("n", "<Leader>q", ":q!<CR>", {})
+map("n", "<Leader>q", function()
+	require("mapping.quit").close()
+end, { noremap = true, silent = true, desc = "Close panel, diff, window, or nvim" })
+map("n", "<Leader>Q", ":qa!<CR>", { noremap = true, silent = true, desc = "Quit nvim" })
 -- Replace
 map("n", "<Leader>R", ":%s/_/_/gc", {})
 map("n", "U", "<C-r>", {})

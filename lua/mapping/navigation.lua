@@ -15,3 +15,8 @@ map("n", "<Leader>t", ":Telescope<CR>", {})
 map("n", "<Leader>tf", ":Telescope fd<CR>", {})
 map("n", "<Leader>tt", ":Telescope live_grep<CR>", {})
 map("n", "<Leader>ts", ":Telescope grep_string<CR>", {})
+-- Same finders the start screen buttons run.
+map("n", "<Leader>ff", ":Telescope find_files<CR>", {})
+map("n", "<Leader>fo", ":Telescope oldfiles<CR>", {})
+map("n", "<Leader>fw", ":Telescope live_grep<CR>", {})
+map("n", "<Leader>bm", ":Telescope marks<CR>", {})
