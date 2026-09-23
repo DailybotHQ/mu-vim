@@ -40,7 +40,7 @@ end
 function M.installation_success()
   local title = "Installation is done"
   local info = "It seems that everything is alright, to complete this process enter nvim then let nvim install some extra features.\n"
-    .. "If you get an issue try checking mu-vim wiki: https://github.com/AndresMpa/mu-vim/wiki"
+    .. "If you get an issue try checking mu-vim wiki: https://github.com/DailybotHQ/mu-vim/wiki"
 
   print_centered_message(title, info)
 end
@@ -48,7 +48,7 @@ end
 function M.installation_wrong()
   local title = "Something went wrong"
   local info = "Try again, if you see this error again, please submit an issue on mu-vim project\n"
-    .. "https://github.com/AndresMpa/mu-vim/issues"
+    .. "https://github.com/DailybotHQ/mu-vim/issues"
 
   print_centered_message(title, info)
 end

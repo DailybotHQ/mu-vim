@@ -168,7 +168,7 @@ end
 
 if FAIL_COUNT > 0 then
   io.write("It seems there were some failures (" .. FAIL_COUNT .. "), please submit an issue at:\n\n")
-  io.write("\thttps://github.com/AndresMpa/mu-vim/issues/new\n")
+  io.write("\thttps://github.com/DailybotHQ/mu-vim/issues/new\n")
   io.write("Details logged in: " .. LOG_FILE .. "\n")
   os.exit(1)
 end

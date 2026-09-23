@@ -52,7 +52,7 @@ The other two are [Mini](https://github.com/AndresMpa/mu-vim-mini) (one `init.vi
 Linux and macOS:
 
 ```
-git clone https://github.com/AndresMpa/mu-vim.git ~/.config/nvim
+git clone https://github.com/DailybotHQ/mu-vim.git ~/.config/nvim
 cd ~/.config/nvim && lua install.lua
 nvim
 ```
@@ -64,7 +64,7 @@ Windows:
 ```
 cd %LOCALAPPDATA%
 move nvim nvim_old
-git clone https://github.com/AndresMpa/mu-vim.git nvim
+git clone https://github.com/DailybotHQ/mu-vim.git nvim
 cd nvim
 lua install.lua
 nvim
