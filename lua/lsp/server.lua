@@ -76,10 +76,19 @@ local configs = {
   marksman = {
     -- Debian slim has no libicu, so the binary abort()s unless globalization
     -- is invariant. `server` is already stdio; passing `--stdio` makes it exit 1.
+    -- Diff views name the buffer `diffview://...`. Marksman treats that as a
+    -- workspace URI, fails to parse the host, and exits. Only start on a real file.
     cmd = { "marksman", "server" },
     cmd_env = {
       DOTNET_SYSTEM_GLOBALIZATION_INVARIANT = "1",
     },
+    root_dir = function(bufnr, on_dir)
+      local name = vim.api.nvim_buf_get_name(bufnr)
+      if name:sub(1, 1) ~= "/" or name:find("://", 1, true) then
+        return
+      end
+      on_dir(vim.fs.root(bufnr, { ".git" }) or vim.fs.dirname(name))
+    end,
   },
 
   ts_ls = {
