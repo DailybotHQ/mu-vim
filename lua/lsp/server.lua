@@ -75,13 +75,9 @@ local configs = {
   },
 
   marksman = {
-    -- Debian slim has no libicu. Without this, marksman abort()s on markdown
-    -- and nvim prints "Client marksman quit".
-    cmd = {
-      "marksman",
-      "server",
-      "--stdio",
-    },
+    -- Debian slim has no libicu, so the binary abort()s unless globalization
+    -- is invariant. `server` is already stdio; passing `--stdio` makes it exit 1.
+    cmd = { "marksman", "server" },
     cmd_env = {
       DOTNET_SYSTEM_GLOBALIZATION_INVARIANT = "1",
     },
