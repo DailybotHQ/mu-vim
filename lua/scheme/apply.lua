@@ -299,11 +299,12 @@ local function paint(p)
 	hi("SpellCap", dim)
 	hi("SpellRare", dim)
 	hi("SpellLocal", dim)
-	-- Quiet line tint + deeper same-hue word patch. bg only, so syntax fg shows through.
-	local add_line = blend_hex(green, bg, 0.22)
-	local del_line = blend_hex(red, bg, 0.22)
-	local chg_line = blend_hex(yellow, bg, 0.18)
-	local chg_word = blend_hex(yellow, bg, 0.48)
+	-- Line tint + same-hue word patch. Strong enough to read on a dark
+	-- terminal; bg only, so syntax fg shows through.
+	local add_line = blend_hex(green, bg, 0.32)
+	local del_line = blend_hex(red, bg, 0.32)
+	local chg_line = blend_hex(yellow, bg, 0.26)
+	local chg_word = blend_hex(yellow, bg, 0.58)
 	vim.api.nvim_set_hl(0, "DiffAdd", { bg = add_line })
 	vim.api.nvim_set_hl(0, "DiffDelete", { bg = del_line })
 	vim.api.nvim_set_hl(0, "DiffChange", { bg = chg_line })
