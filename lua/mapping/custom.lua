@@ -15,7 +15,9 @@ map("n", "<leader>aw", ":ASToggle<CR>", {})
 map("n", "<leader>f", ":Format<CR>", {})
 
 -- Extentions
-map("n", "<Leader>hh", ":Telescope keymaps<CR>", {})
+map("n", "<Leader>hh", function()
+	require("mapping.glossary").open()
+end, {})
 map("n", "<Leader>th", function()
 	require("scheme.picker").open()
 end, {})
