@@ -19,6 +19,16 @@ require("mason").setup({
   },
 })
 
+-- Installed by Mason, but not started. The loop below calls vim.lsp.enable
+-- on every name in `servers`, which ignores mason-lspconfig's exclude list.
+-- tailwindcss walks a monorepo and freezes the editor. grammarly and bashls
+-- crash on Node 24.
+local installed_only = {
+  "tailwindcss",
+  "grammarly",
+  "bashls",
+}
+
 local servers = {
   "efm",
   "astro",
@@ -36,19 +46,15 @@ local servers = {
   "marksman",
   "ts_ls",
   "angularls",
-  "tailwindcss",
   "diagnosticls",
   "rust_analyzer",
   "jedi_language_server",
 }
 
 require("mason-lspconfig").setup({
-  ensure_installed = servers,
-  -- Tailwind walks every nested repo and tmp tree under a monorepo root and
-  -- freezes the editor. Grammarly crashes on Node 24. bashls 5.8 does too:
-  -- it fileURLToPath()s a non-file buffer (diffview) and the process exits.
+  ensure_installed = vim.list_extend(vim.deepcopy(servers), installed_only),
   automatic_enable = {
-    exclude = { "tailwindcss", "grammarly", "bashls" },
+    exclude = installed_only,
   },
 })
 
