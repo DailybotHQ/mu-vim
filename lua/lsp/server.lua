@@ -36,7 +36,6 @@ local servers = {
   "dockerls",
   "marksman",
   "ts_ls",
-  "grammarly",
   "angularls",
   "tailwindcss",
   "diagnosticls",
@@ -46,6 +45,12 @@ local servers = {
 
 require("mason-lspconfig").setup({
   ensure_installed = servers,
+  -- Tailwind walks every nested repo and tmp tree under a monorepo root and
+  -- freezes the editor. Grammarly's server crashes on Node 24 (invalid wasm
+  -- URL) and nvim then prints "Client grammarly quit".
+  automatic_enable = {
+    exclude = { "tailwindcss", "grammarly" },
+  },
 })
 
 local ok_caps, capabilities = pcall(require, "lsp.capabilities")
