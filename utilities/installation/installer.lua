@@ -139,7 +139,7 @@ function M.ensure_formatters()
   end
   if not util.has_command("black") then
     io.write("Installing black with pip\n")
-    if not exec_ok("pip3 install --user black") and not exec_ok("pip install --user black") then
+    if not exec_ok("pip3 install --user black") and not exec_ok("pip install --user black") and not exec_ok("brew install black") then
       io.stderr:write("Could not install black\n")
       status = false
     end
@@ -153,7 +153,9 @@ local function install_unix_packages(manager, packages)
     ["apt-get"] = "sudo apt-get update && sudo apt-get install -y " .. pkg_list,
     pacman = "sudo pacman -Sy --noconfirm " .. pkg_list,
     dnf = "sudo dnf install -y " .. pkg_list,
-    brew = "brew install " .. pkg_list,
+    -- brew exits non-zero when a keg is already present but not linked
+    -- (node@22 leaves a corepack pnpm symlink). The packages are installed.
+    brew = "brew install " .. pkg_list .. " || brew list --formula " .. pkg_list .. " >/dev/null",
   }
   local command = commands[manager]
   if command == nil then
