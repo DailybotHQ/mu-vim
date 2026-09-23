@@ -74,6 +74,19 @@ local configs = {
     },
   },
 
+  marksman = {
+    -- Debian slim has no libicu. Without this, marksman abort()s on markdown
+    -- and nvim prints "Client marksman quit".
+    cmd = {
+      "marksman",
+      "server",
+      "--stdio",
+    },
+    cmd_env = {
+      DOTNET_SYSTEM_GLOBALIZATION_INVARIANT = "1",
+    },
+  },
+
   ts_ls = {
     root_markers = { "tsconfig.json", "jsconfig.json", "package.json", ".git" },
     init_options = {
