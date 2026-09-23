@@ -25,7 +25,7 @@
 
 MμVim is three editor configs. This repository is **Current**: Lua, Neovim only, and where new work lands first.
 
-The other two are [Mini](https://github.com/DailybotHQ/mu-vim-mini) (one `init.vim`) and [VimScript](https://github.com/DailybotHQ/mu-vim-vimscript) (modular Vim and Neovim). Docs for all three: [andresmpa.github.io/mu-vim-page](https://andresmpa.github.io/mu-vim-page/).
+The other two are [Mini](https://github.com/AndresMpa/mu-vim-mini) (one `init.vim`) and [VimScript](https://github.com/AndresMpa/mu-vim-vimscript) (modular Vim and Neovim). Docs for all three: [andresmpa.github.io/mu-vim-page](https://andresmpa.github.io/mu-vim-page/).
 
 #### Take a look
 
