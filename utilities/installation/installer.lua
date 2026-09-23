@@ -96,12 +96,19 @@ function M.pnpm_home()
   return util.path_join(util.home(), ".local", "share", "pnpm")
 end
 
+function M.pnpm_bin()
+  return util.path_join(M.pnpm_home(), "bin")
+end
+
+-- pnpm 10+ refuses `pnpm add -g` unless PNPM_HOME/bin is on PATH
+-- (ERR_PNPM_GLOBAL_BIN_DIR_NOT_IN_PATH). The home directory alone is not enough.
 function M.pnpm_env()
   local home = M.pnpm_home()
+  local bin = M.pnpm_bin()
   if util.is_windows() then
-    return string.format('set PNPM_HOME=%s&& set PATH=%s;%%PATH%%&& ', home, home)
+    return string.format('set PNPM_HOME=%s&& set PATH=%s;%%PATH%%&& ', home, bin)
   end
-  return string.format('PNPM_HOME="%s" PATH="%s:$PATH" ', home, home)
+  return string.format('PNPM_HOME="%s" PATH="%s:$PATH" ', home, bin)
 end
 
 function M.ensure_pnpm()
