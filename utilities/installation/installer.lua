@@ -122,7 +122,9 @@ function M.ensure_pnpm()
       'powershell -NoProfile -Command "iwr https://get.pnpm.io/install.ps1 -useb | iex"'
     )
   end
-  return exec_ok("curl -fsSL https://get.pnpm.io/install.sh | sh -")
+  -- `sh -` has no $SHELL, and pnpm's installer exits with
+  -- ERR_PNPM_UNKNOWN_SHELL. A container build hits that path.
+  return exec_ok("curl -fsSL https://get.pnpm.io/install.sh | env SHELL=/bin/bash sh -")
 end
 
 -- Global pnpm packages go under the user prefix. A system PNPM_HOME
