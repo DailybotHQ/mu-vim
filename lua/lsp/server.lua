@@ -31,7 +31,6 @@ local servers = {
   "jsonls",
   "lua_ls",
   "eslint",
-  "bashls",
   "emmet_ls",
   "dockerls",
   "marksman",
@@ -46,10 +45,10 @@ local servers = {
 require("mason-lspconfig").setup({
   ensure_installed = servers,
   -- Tailwind walks every nested repo and tmp tree under a monorepo root and
-  -- freezes the editor. Grammarly's server crashes on Node 24 (invalid wasm
-  -- URL) and nvim then prints "Client grammarly quit".
+  -- freezes the editor. Grammarly crashes on Node 24. bashls 5.8 does too:
+  -- it fileURLToPath()s a non-file buffer (diffview) and the process exits.
   automatic_enable = {
-    exclude = { "tailwindcss", "grammarly" },
+    exclude = { "tailwindcss", "grammarly", "bashls" },
   },
 })
 
