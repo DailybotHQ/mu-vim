@@ -108,11 +108,39 @@ local configs = {
   },
 }
 
+-- Mason installs these on first start. Enabling one before its binary exists
+-- makes nvim stop on "Press ENTER" (Spawning language server failed).
+local function server_ready(name)
+  local ok, mapping = pcall(function()
+    return require("mason-lspconfig").get_mappings().lspconfig_to_package[name]
+  end)
+  if not ok or not mapping then
+    return true
+  end
+  local pkg_ok, pkg = pcall(require("mason-registry").get_package, mapping)
+  if not pkg_ok then
+    return true
+  end
+  return pkg:is_installed()
+end
+
 for _, server in ipairs(servers) do
   vim.lsp.config(server, vim.tbl_deep_extend("force", defaults, configs[server] or {}))
-
-  vim.lsp.enable(server)
+  if server_ready(server) then
+    vim.lsp.enable(server)
+  end
 end
+
+vim.api.nvim_create_autocmd("User", {
+  pattern = "MasonToolsUpdateCompleted",
+  callback = function()
+    for _, server in ipairs(servers) do
+      if server_ready(server) then
+        vim.lsp.enable(server)
+      end
+    end
+  end,
+})
 
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("muvim_lsp_attach", { clear = true }),
