@@ -39,7 +39,7 @@ The other two are [Mini](https://github.com/AndresMpa/mu-vim-mini) (one `init.vi
 
 Merging to `main` publishes a GitHub Release (`v0.1.0`, then the next tag). `feat:`, `fix:`, and `perf:` bump the minor number. A `BREAKING CHANGE` footer bumps the major number. Any other commit bumps the patch number. Add `[skip release]` to the merge commit body to publish nothing.
 
-Dev containers pin that tag with `ARG MU_VIM_REF`. Set it to the new tag and rebuild. Docker rebuilds the mu-vim layer because the argument changed.
+Dev containers pin that tag with `ARG MU_VIM_REF`. Set it to the new tag and rebuild. Docker rebuilds the mu-vim layer because the argument changed. The current pin is `v0.1.0`.
 
 ## Prerequisites
 
